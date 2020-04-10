@@ -23,7 +23,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'http://localhost/wpu-login2';
+=======
+$config['base_url'] = 'http://localhost/wpu-login';
+>>>>>>> menambahkan fitur user activation dan change password
 
 /*
 |--------------------------------------------------------------------------

@@ -14,7 +14,10 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Login Pages</h1>
                                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> menambahkan fitur user activation dan change password
                                 <?= $this->session->flashdata('message'); ?>
                                 <form class="user" action="<?= base_url('auth') ?>" method="post">
                                     <div class="form-group">
