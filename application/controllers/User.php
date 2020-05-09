@@ -1,15 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-<<<<<<< HEAD
-class User extends CI_Controller
-{
-    public function index()
-    {
-        $data['users'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        echo 'Selamat datang ' . $data['users']['name'];
-        //echo $this->session->userdata('email');
-=======
 // session_start();
 // if (!isset($_SESSION['email'])) {
 //     header("Location: Auth");
@@ -133,6 +124,5 @@ class User extends CI_Controller
                 }
             }
         }
->>>>>>> menambahkan fitur user activation dan change password
     }
 }

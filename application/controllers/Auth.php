@@ -3,15 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-<<<<<<< HEAD
-    public function __construct() //function construct untuk semua method didalam class tsb
-    {
-        parent::__construct();
-        $this->load->library('form_validation'); //mengambil library form_validation
-    }
-    public function index()
-    {
-=======
     public function __construct()
     {
         parent::__construct();
@@ -27,43 +18,10 @@ class Auth extends CI_Controller
         } else {
             // jika ada role_id yg lain maka tambahkan disini
         }
->>>>>>> menambahkan fitur user activation dan change password
         //membuat rules form valid
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-<<<<<<< HEAD
-        //ketika form dijalankan atau di submitt
-        if ($this->form_validation->run() == false) {
-
-            $data['title'] = 'Login Page';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/login');
-            $this->load->view('templates/auth_footer');
-        } else {
-            //validasi sukses
-            $this->_login(); //memanggil fungsi _login 
-        }
-    }
-
-
-    private function _login()
-    {
-        //deklarasi variabel untuk mengambil data dari inputan di form
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
-
-        //query 
-        $user = $this->db->get_where('user', ['email' => $email])->row_array(); //SELECT *FROM where email==email , row_array:data seluruh sesuai email
-        //var_dump($user);
-
-        //jika usernya aktif
-        if ($user) {
-            if ($user['is_active'] == 1) {
-                //menyamakan password yg di login form dengan yang di HASH
-                if (password_verify($password, $user['password'])) {
-                    //siapkan data untuk session 
-=======
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Login Page';
@@ -88,26 +46,10 @@ class Auth extends CI_Controller
 
                 if (password_verify($password, $user['password'])) {
 
->>>>>>> menambahkan fitur user activation dan change password
                     $data = [
                         'email' => $user['email'],
                         'role_id' => $user['role_id']
                     ];
-<<<<<<< HEAD
-                    $this->session->set_userdata($data); //buat session userdata
-                    redirect('user');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Wrong Password. 
-          </div>');
-                }
-            } else { //email blm aktif
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            This email has not been activated. 
-          </div>');
-            }
-        } else { //email blm terdaftar
-=======
                     $this->session->set_userdata($data);
 
                     if ($user['role_id'] == 1) {
@@ -132,17 +74,12 @@ class Auth extends CI_Controller
 
         //email blm terdaftar
         else {
->>>>>>> menambahkan fitur user activation dan change password
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Email is not registered. 
           </div>');
         }
         redirect('auth');
     }
-<<<<<<< HEAD
-    public function registration()
-    {
-=======
 
     public function registration()
     {
@@ -154,7 +91,6 @@ class Auth extends CI_Controller
             // jika ada role_id yg lain maka tambahkan disini
         }
 
->>>>>>> menambahkan fitur user activation dan change password
         //buat rule form validation
         $this->form_validation->set_rules('name', 'Name', 'required|trim'); //set_rules('name/index','alias','required/wajib|trim untuk spasi ga masuk db)
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
@@ -180,21 +116,12 @@ class Auth extends CI_Controller
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT), //password_hash:buat enkripsi, PASSWORD_DEFAULT:algoritma yg digunakan untk encrypt
                 'role_id' => 2,
-<<<<<<< HEAD
-                'is_active' => 1,
-=======
                 'is_active' => 0,
->>>>>>> menambahkan fitur user activation dan change password
                 'date_created' => time()
 
 
             ];
 
-<<<<<<< HEAD
-            $this->db->insert('user', $data); //input ke database table user
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Congratulations! your account has been created. 
-=======
             //siapkan token
             $token = base64_encode(random_bytes(32));
             $user_token = [
@@ -210,14 +137,11 @@ class Auth extends CI_Controller
             $this->_sendEmail($token, 'verify');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulations! your account has been created. Please activate your account! 
->>>>>>> menambahkan fitur user activation dan change password
           </div>'); //membuat session
             redirect('auth');
         }
     }
 
-<<<<<<< HEAD
-=======
     private function _sendEmail($token, $type)
     {
         $config = [
@@ -291,7 +215,6 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
->>>>>>> menambahkan fitur user activation dan change password
 
     public function logout()
     {
@@ -303,8 +226,6 @@ class Auth extends CI_Controller
       </div>'); //membuat session
         redirect('auth');
     }
-<<<<<<< HEAD
-=======
 
     public function goToDefaultPage()
     {
@@ -316,5 +237,4 @@ class Auth extends CI_Controller
             // jika ada role_id yg lain maka tambahkan disini
         }
     }
->>>>>>> menambahkan fitur user activation dan change password
 }

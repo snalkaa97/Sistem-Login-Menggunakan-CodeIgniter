@@ -58,11 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-<<<<<<< HEAD
-$autoload['libraries'] = array('database', 'email', 'session');
-=======
 $autoload['libraries'] = array('database', 'email', 'session', 'form_validation');
->>>>>>> menambahkan fitur user activation dan change password
 
 /*
 | -------------------------------------------------------------------
@@ -93,11 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-<<<<<<< HEAD
-$autoload['helper'] = array('url', 'file', 'security');
-=======
 $autoload['helper'] = array('url', 'file', 'security', 'codinglah');
->>>>>>> menambahkan fitur user activation dan change password
 
 /*
 | -------------------------------------------------------------------
